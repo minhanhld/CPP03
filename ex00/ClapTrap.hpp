@@ -6,11 +6,11 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 19:49:16 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/07 20:31:53 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/16 18:19:04 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAPP_HPP
+#ifndef CLAPTRAP_HPP
 
 # define CLAPTRAP_HPP
 # include <iostream>

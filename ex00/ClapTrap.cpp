@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 20:00:33 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/07 20:41:40 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/16 19:49:31 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hp > 0 && this->_energy > 0 && this->_hp + amount <= 10)
+	if (this->_energy == 0)
+		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
+	else if (this->_hp == 0)
+		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
+	else if (this->_hp > 0 && this->_energy > 0 && (unsigned long int)this->_hp + (unsigned long int)amount <= 10)
 	{
 		this->_energy--;
 		this->_hp += amount;
 		std::cout << "ClapTrap " << this->_name << " has been repaired for " << amount << " hp and has now a total of " << this->_hp << " hp." << std::endl;
 	}
-	else if (this->_hp + amount > 10)
+	else if ((unsigned long int)this->_hp + (unsigned long int)amount > 10)
 		std::cout << "Repairing ClapTrap " << this->_name << " by that much would overheal him which is not possible" << std::endl;
-	else if (this->_energy == 0)
-		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
-	else if (this->_hp == 0)
-		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
 }
 
 //getters
