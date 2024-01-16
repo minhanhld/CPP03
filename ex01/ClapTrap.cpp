@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 20:00:33 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/07 22:26:49 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/16 19:49:31 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 ClapTrap::ClapTrap(): _name("undefined"), _hp(10), _energy(10), _atk_dmg(0)
 {
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _energy(10), _atk_dmg(0)
 {
-	std::cout << "ClapTrap constructor called with the name : " << name << std::endl;
+	std::cout << "Constructor called with the name : " << name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "ClapTrap copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap destructor called for :" << this->_name << std::endl;
+	std::cout << "Destructor called for :" << this->_name << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-	std::cout << "ClapTrap copy assignement constructor called" << std::endl;
+	std::cout << "Copy assignement constructor called" << std::endl;
 	this->_name = src._name;
 	this->_hp = src._hp;
 	this->_energy = src._energy;
@@ -72,18 +72,18 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hp > 0 && this->_energy > 0 && this->_hp + amount <= 10)
+	if (this->_energy == 0)
+		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
+	else if (this->_hp == 0)
+		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
+	else if (this->_hp > 0 && this->_energy > 0 && (unsigned long int)this->_hp + (unsigned long int)amount <= 10)
 	{
 		this->_energy--;
 		this->_hp += amount;
 		std::cout << "ClapTrap " << this->_name << " has been repaired for " << amount << " hp and has now a total of " << this->_hp << " hp." << std::endl;
 	}
-	else if (this->_hp + amount > 10)
+	else if ((unsigned long int)this->_hp + (unsigned long int)amount > 10)
 		std::cout << "Repairing ClapTrap " << this->_name << " by that much would overheal him which is not possible" << std::endl;
-	else if (this->_energy == 0)
-		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
-	else if (this->_hp == 0)
-		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
 }
 
 //getters

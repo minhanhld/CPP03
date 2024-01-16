@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 20:32:02 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/16 19:52:13 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:02:42 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main()
 		a.takeDamage(-1);
 		std::cout << std::endl;
 
-		std::cout << cyan << "Testint beRepaired() function.\n" << reset << std::endl;
+		std::cout << cyan << "Testing beRepaired() function.\n" << reset << std::endl;
 		std::cout << red << "a.beRepaired(5) : " << reset;
 		a.beRepaired(5);
 		std::cout << red << "b.beRepaired(3) : " << reset;

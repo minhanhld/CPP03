@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:27:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/07 22:39:01 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:24:12 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,23 @@ void	ScavTrap::attack(const std::string &target)
 	else if (this->_hp == 0)
 		std::cout << "Having no hit points left, ScavTrap " << this->_name << " wasn't able to perform his assault." << std::endl;
 }
+
+void	ScavTrap::beRepaired(unsigned int amount)
+{
+	if (this->_energy == 0)
+		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
+	else if (this->_hp == 0)
+		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
+	else if (this->_hp > 0 && this->_energy > 0 && (unsigned long int)this->_hp + (unsigned long int)amount <= 100)
+	{
+		this->_energy--;
+		this->_hp += amount;
+		std::cout << "ClapTrap " << this->_name << " has been repaired for " << amount << " hp and has now a total of " << this->_hp << " hp." << std::endl;
+	}
+	else if ((unsigned long int)this->_hp + (unsigned long int)amount > 100)
+		std::cout << "Repairing ClapTrap " << this->_name << " by that much would overheal him which is not possible" << std::endl;
+}
+
 
 void	ScavTrap::guardGate(void)
 {
