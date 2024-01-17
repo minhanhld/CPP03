@@ -6,21 +6,15 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 20:32:02 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/16 20:02:42 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:50:56 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-const std::string red("\033[0;31m");
-const std::string green("\033[1;32m");
-const std::string yellow("\033[1;33m");
-const std::string cyan("\033[0;36m");
-const std::string magenta("\033[0;35m");
-const std::string reset("\033[0m");
-
 int main()
 {
+		std::cout << magenta << "_________________________________________________________________\n\n|\t\t\tSTANDARD TRAP TESTS\t\t\t|\n_________________________________________________________________\n" << reset << std::endl;
 		std::cout << cyan << "Creating 2 robots, one named 'Alain' and the other unnamed.\n" << reset << std::endl;
 		ClapTrap a("Alain");
 		ClapTrap b;
@@ -48,10 +42,6 @@ int main()
 		b.takeDamage(4);
 		std::cout << red << "b.beRepaired(3) : " << reset;
 		b.beRepaired(3);
-		std::cout << red << "b.beRepaired(-1) : " << reset;
-		b.beRepaired(-1);
-		std::cout << red << "Unsigned INT MAX : b.beRepaired(4294967295) : " << reset;
-		b.beRepaired(4294967295);
 		std::cout << std::endl;
 
 		std::cout << cyan << "Wasting a robot's energy and check if he can repair himself.\n" << reset << std::endl;

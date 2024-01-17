@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 20:00:33 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/16 19:49:31 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:43:40 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 ClapTrap::ClapTrap(): _name("undefined"), _hp(10), _energy(10), _atk_dmg(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called, resulting in a Trap whose name is " << yellow << "undefined." << reset << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _energy(10), _atk_dmg(0)
 {
-	std::cout << "Constructor called with the name : " << name << std::endl;
+	std::cout << "ClapTrap constructor called with the name : " << yellow << name << reset << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = copy;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called for :" << this->_name << std::endl;
+	std::cout << "ClapTrap destructor called for : " << yellow << this->_name << reset << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-	std::cout << "Copy assignement constructor called" << std::endl;
+	std::cout << "ClapTrap copy assignement constructor called" << std::endl;
 	this->_name = src._name;
 	this->_hp = src._hp;
 	this->_energy = src._energy;
@@ -47,13 +47,13 @@ void	ClapTrap::attack(const std::string &target)
 {
 	if (this->_hp > 0 && this->_energy > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_atk_dmg << " points of damage!" << std::endl;
+		std::cout << "ClapTrap \"" << yellow << this->_name << reset << "\" attacks " << target << ", causing " << this->_atk_dmg << " points of damage!" << std::endl;
 		this->_energy--;
 	}
 	else if (this->_energy == 0)
-		std::cout << "Too exhausted, ClapTrap " << this->_name << " misses his attack." << std::endl;
+		std::cout << "Too exhausted, ClapTrap \"" << yellow << this->_name << reset << "\" misses his attack." << std::endl;
 	else if (this->_hp == 0)
-		std::cout << "Having no hit points left, ClapTrap " << this->_name << " wasn't able to perform his assault." << std::endl;
+		std::cout << "Having no hit points left, ClapTrap \"" << yellow << this->_name << reset << "\" wasn't able to perform his assault." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -64,26 +64,24 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hp = 0;
 	else if (this->_hp == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << "'s hp are already depleted." << std::endl;
+		std::cout << "Trap \"" << yellow << this->_name << reset << "\" doesn't have any HP left." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " got hit for " << amount << " damage, leaving him at " << this->_hp << " hit points." << std::endl;
+	std::cout << "Trap \"" << yellow << this->_name << reset << "\" got hit for " << amount << " damage, leaving him at " << this->_hp << " hit points." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energy == 0)
-		std::cout << "ClapTrap " << this->_name << " is too exhausted to repair himself." << std::endl;
+		std::cout << "\"" << yellow << this->_name << reset << "\" is too exhausted to repair himself." << std::endl;
 	else if (this->_hp == 0)
-		std::cout << "ClapTrap " << this->_name << " has not enough hp left to attempt a repair." << std::endl;
-	else if (this->_hp > 0 && this->_energy > 0 && (unsigned long int)this->_hp + (unsigned long int)amount <= 10)
+		std::cout << "\"" << yellow << this->_name << reset << "\" has not enough hp left to attempt a repair." << std::endl;
+	else if (this->_hp > 0 && this->_energy > 0)
 	{
 		this->_energy--;
 		this->_hp += amount;
-		std::cout << "ClapTrap " << this->_name << " has been repaired for " << amount << " hp and has now a total of " << this->_hp << " hp." << std::endl;
+		std::cout << "Trap \"" << yellow << this->_name << reset << "\" has been repaired for " << amount << " hp and has now a total of " << this->_hp << " hp and " << this->_energy << " energy points left." << std::endl;
 	}
-	else if ((unsigned long int)this->_hp + (unsigned long int)amount > 10)
-		std::cout << "Repairing ClapTrap " << this->_name << " by that much would overheal him which is not possible" << std::endl;
 }
 
 //getters
