@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:27:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/01/07 23:04:06 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:13:44 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	FragTrap::attack(const std::string &target)
 	else if (this->_energy == 0)
 		std::cout << "Too exhausted, FragTrap " << this->_name << " misses his attack." << std::endl;
 	else if (this->_hp == 0)
-		std::cout << "Having no hit points left, FragTrap " << this->_name << " wasn't able to perform his assault." << std::endl;
+		std::cout << "Having no hit points left, FragTrap " << this->_name << " wasn't able to perform his assault" << std::endl;
 }
 
 void	FragTrap::highFiveGuys(void)
